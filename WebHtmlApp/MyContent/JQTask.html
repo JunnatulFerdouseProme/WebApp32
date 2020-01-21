@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row" style="text-align: center">Copy</div>
+            <div class="row">
+                <div class="col-md-4">Name</div>
+                <div class="col-md-4"><input type="text" id="nameInput" /></div>
+                <div class="col-md-4"><p id="nameParagraph"></p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">Address</div>
+                <div class="col-md-4"><input type="text" id="addressInput" /></div>
+                <div class="col-md-4"><p id="addressParagraph"></p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">Age</div>
+                <div class="col-md-4"><input type="text" id="ageInput" /></div>
+                <div class="col-md-4"><p id="ageParagraph"></p></div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"><button id="copyButton">Copy</button></div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+         
+        </div>
+    </div>
+    
+</div>
+<script src="../Scripts/jquery-1.9.1.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $("#copyButton").click(function() {
+            var name = $("#nameInput").val();
+            var address = $("#addressInput").val();
+            var age = $("#ageInput").val();
+
+            $("#nameParagraph").text(name);
+            $("#addressParagraph").text(address);
+            $("#ageParagraph").text(age);
+        });
+
+    });
+</script>
+</body>
+</html>

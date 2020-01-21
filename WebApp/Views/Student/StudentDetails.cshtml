@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "StudentDetails";
+}
+
+<h2>StudentDetails</h2>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="form-group">
+
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <label for="Department" class="control-label col-2">Department</label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownList("Department", null, "--Select--", null)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <label for="student" class="control-label col-2">Student</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="Student">
+                            <option>--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <label for="rollno" class="control-label col-2">RollNo</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="RollNo" value="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="studentPartial"></div>
+    </div>
+</div>
+@section MyScript
+{
+    <script>
+        $(document).ready(function () {
+
+            $("#Department").change(function () {
+                var departmentId = $("#Department").val();
+                var jsonRequestData = { departmentId: departmentId }
+
+                $.ajax({
+                    url: "/student/GetStudentByDepartmentId",
+                    type: "POST",
+                    data: jsonRequestData,
+
+                    success: function (data) {
+                        //alert("Ajax Success");
+                        $("#Student").empty();
+                        $("#Student").append('<option>--Select--</option>');
+                        $.each(data, function (key, value) {
+
+                            //alert("Id:" + value.Id + " Name: " + value.Name);
+                            $("#Student").append('<option value="' + value.Id + '">' + value.Name + '</option>');
+                        });
+                    },
+                    error: function () {
+                        alert("Ajax Failed");
+                    }
+                });
+            });
+            $("#Student").change(function () {
+                var studentId = $("#Student").val();
+
+                var jsonRequestData = { studentId: studentId };
+                // Ajax
+                $.ajax({
+                    url: "/student/GetStudentById",
+                    type: "POST",
+                    data: jsonRequestData,
+                    success: function (data) {
+                        var rollNo = data[0].RollNo;
+                        $("#RollNo").val(rollNo);
+
+                    },
+                    error: function () {
+                        alert("Ajax Request Failed!!!");
+                    }
+                });
+            });
+            ////Student Details
+            //$("#Student").change(function () {
+
+            //    var studentId = $("#Student").val();
+
+            //    var jsonRequesData = { studentId: studentId };
+
+            //    $.ajax({
+            //        url: "/student/GetStudentById",
+            //        type: "POST",
+            //        data: jsonRequesData,
+            //        success: function (data) {
+            //            //alert("Ajax Requiest Success");
+            //            $("#studentPartial").html(data);
+            //        },
+            //        error: function () {
+            //            alert("Ajax Requiest Error");
+            //        }
+            //    });
+
+
+            //});
+
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#Student").change(function () {
+                var studentId = $("#Student").val();
+                var jsonRequestData = { studentId: studentId };
+
+                $.ajax({
+                    url: "/student/GetStudetnById",
+                    type: "POST",
+                    data: jsonRequestData,
+                    success: function (data) {
+                        $("#studentPartial").html(data);
+                    },
+                    error: function () {
+                        alert("Not Work");
+                    },
+                });
+            });
+        });
+    </script>
+}
+

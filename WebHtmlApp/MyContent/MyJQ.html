@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row" style="text-align: center">My JS & JQ</div>
+                <div class="row">
+                    <div class="col-md-6"><p id="pJS"></p></div>
+                    <div class="col-md-6"><p id="pJQ"></p></div>
+                </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-5">
+                <div class="row" style="text-align: center">GET & SET</div>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-5"><p id="getP"> Get element value</p></div>
+                    <div class="col-sm-5"><input type="text" id="name" value="Ornob" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Get:</div>
+                    <div class="col-sm-5"><button id="getPElenemt"> Get Element </button></div>
+                    <div class="col-sm-5"><button id="getInputElement"> Get input</button></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-2">Set:</div>
+                    <div class="col-sm-5"><button id="setPElenemt"> Set Element </button></div>
+                    <div class="col-sm-5"><button id="setInputElement"> Set input</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row"></div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-5">
+                <div class="row"></div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script>
+        //JS
+        document.getElementById("pJS").innerHTML = "My JS";
+
+        //JQ
+
+        //$(selector).action(handler);
+
+        $(document).ready(function () {
+
+            $("#pJQ").text("My JQ");
+
+            //GET
+            $("#getPElenemt").click(function () {
+
+                alert($("#getP").text());
+            });
+
+            $("#getInputElement").click(function () {
+
+                var name = $("#name").val();
+                alert(name);
+            });
+
+            //SET
+            $("#setPElenemt").click(function () {
+
+                $("#getP").text(" This is Batch 8");
+
+            });
+
+            $("#setInputElement").click(function () {
+
+                $("#name").val(" This is Batch 8");
+
+            });
+
+        });
+    </script>
+</body>
+</html>
